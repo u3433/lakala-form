@@ -174,6 +174,7 @@
         <input type="hidden" name="_subject" value="新商户开户申请">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://u3433.github.io/lakala-form/">
 
         <div class="form-item">
             <label class="form-label">姓名 <span class="required-star">*</span></label>
@@ -275,6 +276,8 @@
                 <input type="file" id="photo4" name="储蓄卡照片" accept="image/*" required>
             </div>
         </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">提交申请</button>
     </form>
 </div>
 
@@ -282,8 +285,6 @@
     <strong>注意事项</strong>【保持电话畅通，以便客服审核】<br>
     提交申请后，联系客服审核，审核通过后可正常使用
 </div>
-
-<button class="submit-btn" id="submitBtn">提交申请</button>
 
 <div class="bottom-text">
     <p>提交即授权该表单收集你填写的信息，信息仅用于审核，绝不泄露</p>
@@ -414,32 +415,6 @@ window.onload = function() {
     });
     checkCooldown();
 };
-
-submitBtn.onclick = function() {
-    if (submitBtn.disabled) return;
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const province = document.getElementById('province').value;
-    const city = document.getElementById('city').value;
-    const address = document.getElementById('address').value.trim();
-    const p1 = document.getElementById('photo1').files[0];
-    const p2 = document.getElementById('photo2').files[0];
-    const p3 = document.getElementById('photo3').files[0];
-    const p4 = document.getElementById('photo4').files[0];
-
-    if (!name || !phone || !province || !city || !address) {
-        alert('请填写完整必填信息！');
-        return;
-    }
-    if (!p1 || !p2 || !p3 || !p4) {
-        alert('请上传全部4张照片！');
-        return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "提交中，请稍候...";
-    document.querySelector('form').submit();
-}
 </script>
 </body>
 </html>
